@@ -17,6 +17,7 @@ public class AppConfig {
         String mode = System.getenv("mode");
         mode = mode == null || mode.isBlank() ? "":"-" + mode;
 
+        //properties 가져올때 사용
         bundle = ResourceBundle.getBundle("application" + mode);
         configs = new HashMap<>();
         Iterator<String> iter = bundle.getKeys().asIterator();
