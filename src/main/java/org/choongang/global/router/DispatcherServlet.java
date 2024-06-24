@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @WebServlet("/")
 public class DispatcherServlet extends HttpServlet  {
-
+//요청 제일 먼저 유입되는 곳
     @Override
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
         BeanContainer bc = BeanContainer.getInstance();
