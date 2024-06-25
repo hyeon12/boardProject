@@ -19,6 +19,7 @@
         SELECT * FROM MEMBER WHERE EMAIL=#{email}
     </select>
 
+    <!--resultType : 쿼리 결과를 기본 타입이나 특정 클래스의 인스턴스로 변환하는 데 사용됨. 보통 단일 값(예: int, String)을 반환할 때 사용 -->
     <select id="exists" resultType="int">
         SELECT COUNT(*) FROM MEMBER WHERE EMAIL=#{email}
     </select>
