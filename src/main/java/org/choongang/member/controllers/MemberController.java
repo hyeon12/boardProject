@@ -2,6 +2,7 @@ package org.choongang.member.controllers;
 
 import org.choongang.global.config.annotations.Controller;
 import org.choongang.global.config.annotations.GetMapping;
+import org.choongang.global.config.annotations.PostMapping;
 import org.choongang.global.config.annotations.RequestMapping;
 
 @Controller
@@ -15,8 +16,9 @@ public class MemberController {
     }
 
     //회원 가입 처리
-    @GetMapping("/join")
-    public String joinPs(){
+    @PostMapping("/join")
+    public String joinPs(RequestJoin form){
+        System.out.println(form);
         return null;
     }
 
@@ -27,8 +29,21 @@ public class MemberController {
     }
 
     //로그인 처리
-    @GetMapping("/login")
-    public String loginPs(){
+    @PostMapping("/login")
+    public String loginPs(RequestLogin form){
+        System.out.println(form);
         return null;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
