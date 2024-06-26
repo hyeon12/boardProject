@@ -1,0 +1,78 @@
+/* 사이트 헤더  #228B22; */
+header{
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    align-items: center;
+}
+
+/* 내용 배치 */
+main{
+    display: flex;
+    min-height: 750px;
+}
+
+/* 사이드 주 메뉴 S */
+main > .side-menu {
+    width: 210px;
+    background: #228B22;
+}
+
+main > .side-menu a {
+    display: block;
+    height: 65px;
+    font-size: 1.35rem;
+    color: #fff;
+    padding: 0 30px;
+    line-height: 62px;
+    text-align: center;
+}
+
+main > .side-menu a + a {
+    border-top: 3px solid #8FBC8F;
+}
+
+main > .side-menu a:hover,
+main > .side-menu a.on {
+    background: #006400;
+}
+
+/* 사이드 주 메뉴 E */
+
+/* 내용 영역 S */
+main > .main-content {
+    flex-grow: 1;
+    background: #f8f8f8;
+    padding: 50px;
+}
+
+main > .main-content h1{
+    line-height: 1;
+    margin: 0 0 30px;
+    padding: 0 10px 15px;
+    border-bottom: 3px solid #222;
+}
+/* 내용 영역 E */
+
+/* 서브 메뉴 S */
+nav.sub-menu {
+    background: #fff;
+    display: flex;
+    height: 45px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #333;
+    margin-bottom: 50px;
+}
+
+nav.sub-menu a {
+    line-height: 50px;
+    padding: 0 30px;
+    font-size: 1.35rem;
+}
+
+nav.sub-menu a:hover {
+    background: #333;
+    color: #fff;
+}
+
+/* 서브 메뉴 E */

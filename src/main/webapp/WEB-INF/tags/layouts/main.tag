@@ -74,7 +74,7 @@
         </section>
         <nav>
             <div class="layout-width inner">
-                <a href="#">메뉴1</a>
+                <a href="board/notice">공지사항</a>
                 <a href="#">메뉴2</a>
                 <a href="#">메뉴3</a>
                 <a href="#">메뉴4</a>
