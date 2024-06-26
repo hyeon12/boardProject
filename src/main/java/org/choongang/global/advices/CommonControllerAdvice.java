@@ -16,22 +16,23 @@ public class CommonControllerAdvice {
     private final MemberUtil memberUtil;
 
     @ModelAttribute
-    public boolean isLogin(){
+    public boolean isLogin() {
         return memberUtil.isLogin();
     }
 
-    public boolean isAdmin(){
+    @ModelAttribute
+    public boolean isAdmin() {
         return memberUtil.isAdmin();
     }
 
     @ModelAttribute
-    public Member loggedMember(){
+    public Member loggedMember() {
         return memberUtil.getMember();
     }
 
     /**
      * 공통 에러 페이지 처리
-     * 
+     *
      * @param e
      * @param request
      * @return
@@ -41,27 +42,24 @@ public class CommonControllerAdvice {
 
         e.printStackTrace();
 
-        if(e instanceof CommonException commonException) {
-            int status = commonException.getStatus();//응답코드 가지고 옴
+        if (e instanceof CommonException commonException) {
+            int status = commonException.getStatus();
             response.setStatus(status);
-
 
             StringBuffer sb = new StringBuffer(1000);
             if (e instanceof AlertException) {
-                //alert 형태의 메세지 띄우기
                 sb.append(String.format("alert('%s');", e.getMessage()));
             }
 
-            //target.history.back();
             if (e instanceof AlertBackException alertBackException) {
                 String target = alertBackException.getTarget();
                 sb.append(String.format("%s.history.back();", target));
             }
 
-            //target.location.replace('url'); 타겟과 주소 모두 변경
             if (e instanceof AlertRedirectException alertRedirectException) {
                 String target = alertRedirectException.getTarget();
                 String url = alertRedirectException.getRedirectUrl();
+
                 sb.append(String.format("%s.location.replace('%s');", target, url));
             }
 
@@ -69,11 +67,12 @@ public class CommonControllerAdvice {
                 request.setAttribute("script", sb.toString());
                 return "commons/execute_script";
             }
-        } else{
-            //CommonException 으로 정의한 예외가 아닌 경우 - 응답 코드 500
+        } else {
+            // CommonException으로 정의한 예외가 아닌 경우 - 응답 코드 500
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
 
-        return "errors/error"; //에러페이지 출력
+
+        return "errors/error";
     }
 }

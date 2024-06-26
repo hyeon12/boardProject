@@ -8,21 +8,20 @@ import org.choongang.member.entities.Member;
 
 @Component
 @RequiredArgsConstructor
-//편의기능 - 의존성 주입
 public class MemberUtil {
     private final HttpSession session;
 
     // 로그인 여부
-    public boolean isLogin(){
+    public boolean isLogin() {
         return getMember() != null;
     }
 
     // 관리자 여부
-    public boolean isAdmin(){
-        if(isLogin()){
+    public boolean isAdmin() {
+        if (isLogin()) {
             Member member = getMember();
+
             return member.getUserType() == UserType.ADMIN;
-            //getMember().getUserType() == UserType.ADMIN;
         }
 
         return false;
@@ -32,9 +31,9 @@ public class MemberUtil {
      * 로그인한 회원 정보
      *
      * @return
-     * */
-    public Member getMember(){
-        Member member = (Member) session.getAttribute("member");
+     */
+    public Member getMember() {
+        Member member = (Member)session.getAttribute("member");
 
         return member;
     }
