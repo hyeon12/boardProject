@@ -1,4 +1,4 @@
-<%@ tag body-content="scriptless" %>
+<%@ tag body-content="scriptless" %><%--스크립트 태그가 포함되지 않은 순수 HTML이나 텍스트만을 허용--%>
 <%@ tag pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
