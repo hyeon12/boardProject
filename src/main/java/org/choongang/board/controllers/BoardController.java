@@ -9,7 +9,7 @@ import org.choongang.global.config.annotations.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/board")
+@RequestMapping("/board_ex")
 @RequiredArgsConstructor
 public class BoardController {
     private final HttpServletRequest request;
@@ -17,6 +17,6 @@ public class BoardController {
     @GetMapping("/notice")
     public String notice(){
         request.setAttribute("addCss", List.of("notice"));
-        return "board/notice";
+        return "board_ex/notice";
     }
 }
