@@ -38,31 +38,34 @@ public class HandlerControllerAdvice {
             }
         }
 
-        boolean isContinue = true; //controller 실행
-        // 매칭된
-        if (matchedAdvices != null) {
-
-            //인터셉터 체크
-            if(matchedAdvices instanceof Interceptor interceptor){
-                isContinue = interceptor.preHandle();
-            }
-
-            Method[] methods = matchedAdvices.getClass().getDeclaredMethods();
-            for(Method method : methods) {
-                for (Annotation anno : method.getDeclaredAnnotations()) {
-                    // 공통 유지할 속성 처리 S
-                    if (anno instanceof ModelAttribute ma) {
-                        try {
-                            String name = ma.value().isBlank() ? method.getName() : ma.value().trim();
-                            Object value = method.invoke(matchedAdvices);
-                            request.setAttribute(name, value);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+        boolean isContinue = true;
+        // 매칭된 어드바이스가 있다면
+        if (!matchedAdvices.isEmpty()) {
+            for (Object matchedAdvice : matchedAdvices) {
+                // 인터셉터 체크
+                if (matchedAdvice instanceof Interceptor interceptor) {
+                    if(!interceptor.preHandle()) {
+                        isContinue = false;
                     }
-                    // 공통 유지할 속성 처리 E
+                }
+
+                Method[] methods = matchedAdvice.getClass().getDeclaredMethods();
+                for (Method method : methods) {
+                    for (Annotation anno : method.getDeclaredAnnotations()) {
+                        // 공통 유지할 속성 처리 S
+                        if (anno instanceof ModelAttribute ma) {
+                            try {
+                                String name = ma.value().isBlank() ? method.getName() : ma.value().trim();
+                                Object value = method.invoke(matchedAdvice);
+                                request.setAttribute(name, value);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        // 공통 유지할 속성 처리 E
+                    } // endfor
                 } // endfor
-            } // endfor
+            }
         }
 
         return isContinue;
@@ -71,10 +74,10 @@ public class HandlerControllerAdvice {
     public List<Object> getControllerAdvices(boolean isRest) {
 
         return BeanContainer.getInstance()
-                    .getBeans()
-                    .values()
-                    .stream()
-                    .filter(b -> Arrays.stream(b.getClass().getAnnotations()).anyMatch(a -> (!isRest && a instanceof ControllerAdvice) || (isRest && a instanceof RestControllerAdvice)))
-                    .toList();
+                .getBeans()
+                .values()
+                .stream()
+                .filter(b -> Arrays.stream(b.getClass().getAnnotations()).anyMatch(a -> (!isRest && a instanceof ControllerAdvice) || (isRest && a instanceof RestControllerAdvice)))
+                .toList();
     }
 }

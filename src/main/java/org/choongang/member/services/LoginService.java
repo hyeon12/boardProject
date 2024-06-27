@@ -1,3 +1,4 @@
+
 package org.choongang.member.services;
 
 import jakarta.servlet.http.HttpSession;
@@ -16,10 +17,10 @@ public class LoginService {
     private final LoginValidator loginValidator;
     private final MemberMapper mapper;
 
-    public void process(RequestLogin form){
+    public void process(RequestLogin form) {
         loginValidator.check(form);
 
-        // 회원 정보 조회 (위에서 검증 끝났으므로, 가져오는 것)
+        // 회원 정보 조회
         Member member = mapper.get(form.getEmail());
 
         // 세션에 회원 정보 유지
