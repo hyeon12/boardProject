@@ -7,7 +7,7 @@ import org.choongang.board.constants.Authority;
 @Data
 @Builder
 public class Board {
-    private String bID;
+    private String bId;
     private String bName;
     private int rowsPerPage;
     private int active;
