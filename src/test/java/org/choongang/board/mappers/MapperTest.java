@@ -59,7 +59,7 @@ public class MapperTest {
     }
 
     @AfterEach
-    void destoy(){
+    void destroy(){
         session.rollback();
     }
 }
