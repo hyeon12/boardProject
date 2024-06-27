@@ -3,14 +3,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="layout" tagdir="/WEB-INF/tags/layouts" %>
 <fmt:setBundle basename="messages.commons" />
-<fmt:message var="pageTitle" key="공지사항" />
+<fmt:message var="pageTitle" key="NOTICE" />
 <c:url var="actionUrl" value="/board/notice" />
 
 <layout:main title="${pageTitle}">
 
     <div class="board_area">
         <div class="location_cont">
-            <em><a href="${homeUrl}" class="local_home">HOME</a> &gt; 질문과답변</em>
+            <em><a href="${homeUrl}" class="local_home">HOME</a> &gt; NOTICE</em>
         </div>
         <h1>${pageTitle}</h1>
         <table class="notice-table">

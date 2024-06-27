@@ -74,11 +74,11 @@
         </section>
         <nav>
             <div class="layout-width inner">
-                <a href="board/notice">공지사항</a>
-                <a href="#">메뉴2</a>
-                <a href="#">메뉴3</a>
-                <a href="#">메뉴4</a>
-                <a href="#">메뉴5</a>
+                <a href="board_ex/notice">NOTICE</a>
+                <a href="#">ABOUT ME</a>
+                <a href="#">SKILLS</a>
+                <a href="#">ACTIVITIES</a>
+                <a href="#">CONTECT</a>
             </div>
         </nav>
     </jsp:attribute>
