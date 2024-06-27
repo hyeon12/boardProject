@@ -26,8 +26,8 @@ public class AdminControllerAdvice implements Interceptor {
 
         if(!memberUtil.isAdmin()){
             //throw new UnAuthorizedException();//관리자 아닐땐 401 페이지 출력
+            //관리자 로그인상태로 유지,,(개발중)
         }
-
         return true;
     }
 

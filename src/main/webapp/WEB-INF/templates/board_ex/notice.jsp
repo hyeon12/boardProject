@@ -14,7 +14,6 @@
         </div>
         <h1>${pageTitle}</h1>
         <table class="notice-table">
-            <thead>
                 <tr>
                     <th>번호</th>
                     <th>제목</th>
@@ -22,8 +21,6 @@
                     <th>날짜</th>
                     <th>조회</th>
                 </tr>
-            </thead>
-            <tbody>
                 <c:forEach var="item" begin="1" end="3">
                     <tr>
                         <td>${item}</td>
@@ -33,7 +30,6 @@
                         <td>100</td>
                     </tr>
                 </c:forEach>
-            </tbody>
         </table>
     </div>
 
