@@ -8,6 +8,7 @@ import org.choongang.global.config.containers.BeanContainer;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,15 +24,15 @@ public class HandlerControllerAdvice {
 
         boolean isRest = Arrays.stream(clazz.getAnnotations()).anyMatch(a -> a instanceof RestController);
         List<Object> advices = getControllerAdvices(isRest);
-        Object matchedAdvice = null;
-        first: for (Object advice : advices) {
+        List<Object> matchedAdvices = new ArrayList<>();
+        for (Object advice : advices) {
             Annotation[] annotations = advice.getClass().getAnnotations();
             for (Annotation annotation : annotations) {
                 if (annotation instanceof ControllerAdvice anno) {
                     boolean isMatched = Arrays.stream(anno.value()).anyMatch(pkName::startsWith);
                     if (isMatched) {
-                        matchedAdvice = advice;
-                        break first;
+                        matchedAdvices.add(advice);
+
                     }
                 }
             }
@@ -39,21 +40,21 @@ public class HandlerControllerAdvice {
 
         boolean isContinue = true; //controller 실행
         // 매칭된
-        if (matchedAdvice != null) {
+        if (matchedAdvices != null) {
 
             //인터셉터 체크
-            if(matchedAdvice instanceof Interceptor interceptor){
+            if(matchedAdvices instanceof Interceptor interceptor){
                 isContinue = interceptor.preHandle();
             }
 
-            Method[] methods = matchedAdvice.getClass().getDeclaredMethods();
+            Method[] methods = matchedAdvices.getClass().getDeclaredMethods();
             for(Method method : methods) {
                 for (Annotation anno : method.getDeclaredAnnotations()) {
                     // 공통 유지할 속성 처리 S
                     if (anno instanceof ModelAttribute ma) {
                         try {
                             String name = ma.value().isBlank() ? method.getName() : ma.value().trim();
-                            Object value = method.invoke(matchedAdvice);
+                            Object value = method.invoke(matchedAdvices);
                             request.setAttribute(name, value);
                         } catch (Exception e) {
                             e.printStackTrace();
