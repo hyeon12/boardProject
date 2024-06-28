@@ -2,6 +2,26 @@
 # 목차
 1. [사이트 기본 구성](https://github.com/yonggyo1125/project501_13_jsp?tab=readme-ov-file#%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95)
 2. [게시판 만들기](https://github.com/yonggyo1125/project501_13_jsp/tree/board)
+```dtd
+CREATE TABLE BOARD_DATA (
+        SEQ NUMBER(10) PRIMARY KEY,
+        BID VARCHAR2(30),
+        GID VARCHAR2(45),
+        POSTER VARCHAR2(40) NOT NULL,
+        MEMBER_SEQ NUMBER(10) DEFAULT 0,
+        GUEST_PASSWORD VARCHAR2(65),
+        CATEGORY VARCHAR2(40),
+        NOTICE NUMBER(1) DEFAULT 0,
+        SUBJECT VARCHAR2(255) NOT NULL,
+        CONTENT CLOB NOT NULL,
+        UA VARCHAR2(150),
+        IP VARCHAR2(30),
+        REG_DT DATE DEFAULT SYSDATE,
+        MOD_DT DATE
+        );
+
+CREATE SEQUENCE SEQ_BOARD_DATA;
+```
 3. [포켓몬 도감 가이드](https://github.com/yonggyo1125/project501_13_jsp/tree/pokemon)
 
 ---

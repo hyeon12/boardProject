@@ -39,6 +39,12 @@ public class BoardController {
     @GetMapping("/write/{bId}")
     public String write(@PathVariable("bId") String bId) {
         commonProcess(bId, "write");
+
+        RequestBoardData data = new RequestBoardData();
+        data.setBId(bId);//의존성 추가로 getter,setter
+
+        request.setAttribute("data", data);//기초 초기 데이터 넣어주기
+
         return "board/write";
     }
 
