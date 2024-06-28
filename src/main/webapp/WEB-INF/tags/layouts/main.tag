@@ -74,7 +74,7 @@
         </section>
         <nav>
             <div class="layout-width inner">
-                <a href="board_ex/notice">NOTICE</a>
+                <a href="board/notice">NOTICE</a>
                 <a href="#">ABOUT ME</a>
                 <a href="#">SKILLS</a>
                 <a href="#">ACTIVITIES</a>

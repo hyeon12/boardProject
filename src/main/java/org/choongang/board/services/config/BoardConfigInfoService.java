@@ -26,13 +26,14 @@ public class BoardConfigInfoService {
 
     public RequestBoard getForm(String bId){
         Board board = get(bId).orElseThrow(BoardConfigNotFoundException::new);
+
         RequestBoard form = new RequestBoard();
         form.setMode("update");
         form.setBId(board.getBId());
         form.setBName(board.getBName());
         form.setRowsPerPage(board.getRowsPerPage());
         form.setActive(board.getActive() == 1);
-        form.setActiveCategory(board.getActiveCategory()==1);
+        form.setActiveCategory(board.getActiveCategory() == 1);
         form.setCategory(board.getCategory());
         form.setAuthority(board.getAuthority().name());
 
