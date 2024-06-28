@@ -64,8 +64,8 @@ public class BoardController {
 
         if(mode.equals("write") || mode.equals("update")){// 쓰기, 수정
             addCss.add("board/form"); //양식 추가
-            addScript.add("ckeditor5/ckeditor5");
-            //js 패키지 -> ckeditor5 -> ckeditor5.js 찾음
+            addScript.add("ckeditor5/ckeditor");
+            //js 패키지 -> ckeditor5 -> ckeditor.js 찾음
             addScript.add("board/form");
         } else if(mode.equals("list")){// 목록
             addCss.add("board/list");
