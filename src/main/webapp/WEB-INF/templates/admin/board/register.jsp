@@ -10,7 +10,7 @@
     <jsp:include page="_form.jsp" />
 
     <div class='button-group'>
-        <button type="reset">다시입력</button>
+        <button type='reset'>다시입력</button>
         <button type="submit">등록하기</button>
     </div>
 </form>
