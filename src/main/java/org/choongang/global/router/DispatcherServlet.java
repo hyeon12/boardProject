@@ -24,8 +24,10 @@ public class DispatcherServlet extends HttpServlet  {
         bc.addBean(HttpServletRequest.class.getName(), request);
         bc.addBean(HttpServletResponse.class.getName(), response);
         bc.addBean(HttpSession.class.getName(), request.getSession());
+        //addBeans - 외부에서 키,객체를 인수로 받아 수동으로 객체를 추가할 수 있는 인터페이스 생성
 
         bc.loadBeans();
+        //특정 애노테이션을 가진 클래스의 인스턴스 생성 -> beans 맵에 저장
 
         RouterService service = bc.getBean(RouterService.class);
         service.route(request, response);
